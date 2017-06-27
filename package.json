@@ -4,7 +4,7 @@
   "description": "A scroll component for React.js",
   "main": "dist/index.js",
   "files": [
-    "modules/"
+    "dist/"
   ],
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   "scripts": {
     "examples": "webpack-dev-server --config examples/webpack.config.js --no-info --content-base examples",
     "build": "babel modules -d dist --ignore '**/__tests__/**'",
-    "postinstall": "npm run build",
+    "prepublish": "npm run build",
     "clean": "rm -rf dist/*",
     "test": "karma start"
   },
