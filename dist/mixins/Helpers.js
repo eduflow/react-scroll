@@ -251,6 +251,9 @@ var Helpers = {
         var _this2 = _possibleConstructorReturn(this, (_.__proto__ || Object.getPrototypeOf(_)).call(this, props));
 
         _this2.registerElems = _this2.registerElems.bind(_this2);
+        _this2.childBindings = {
+          domNode: null
+        };
         return _this2;
       }
 
@@ -274,13 +277,12 @@ var Helpers = {
       }, {
         key: 'registerElems',
         value: function registerElems(name) {
-          var domNode = ReactDOM.findDOMNode(this);
-          defaultScroller.register(name, domNode);
+          defaultScroller.register(name, this.childBindings.domNode);
         }
       }, {
         key: 'render',
         value: function render() {
-          return React.createElement(Component, this.props);
+          return React.createElement(Component, Object.assign({}, this.props, { parentBindings: this.childBindings }));
         }
       }]);
 
